@@ -28,8 +28,15 @@ app.get("/now",function(req,res,next){
     word=req.params.word
     app.send(res.json({"echo":word}))
   })
-
-
+//Extracting data from json and take query para
+  app.get("/name", function(req, res) {
+    var firstName = req.query.first;
+    var lastName = req.query.last;
+    // Use template literals to form a formatted string
+    res.json({
+      name: firstName + " "+lastName
+    });
+  });
 
 
 
