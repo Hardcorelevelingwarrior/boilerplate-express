@@ -1,6 +1,9 @@
 let express = require('express');
 let app = express();
 console.log("Hello World");
+//Use bodyParser as middleware
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 //app.get("/",function(req,res){res.send("Hello Express")});
 //Request for HTML
 absoulutePathHTML=__dirname + "/views/index.html";
@@ -38,8 +41,11 @@ app.get("/now",function(req,res,next){
     });
   });
 
-
-
+//Extracting data from post method
+  app.post("/name", function (req,res){
+    var string = req.body.first + " " + req.body.last;
+    res.json({ name: string });
+    });
 
 
 
